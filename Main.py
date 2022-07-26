@@ -4,13 +4,13 @@ class Stack:
         self.items = []
         self.size = size
 
-    [9:41 pm, 26/07/2022] Sarvesh KITS: def is_empty(self):
+    def is_empty(self):
         # Write code here
         if self.top==-1:
             return 1
         else:
             return 0
-[9:41 pm, 26/07/2022] Sarvesh KITS: def is_full(self):
+    def is_full(self):
         # Write code here
         if self.top==(self.size -1):
             return 1
