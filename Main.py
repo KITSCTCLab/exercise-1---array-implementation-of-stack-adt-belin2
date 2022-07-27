@@ -1,39 +1,41 @@
 import os
-class stackADT:
-    def __init__ (s,n):
-        s.n= n
-        s.st= [None]*n
-        s.top= -1
-    def push(s):
-        if s.top == s.n-1:
-            print("Stack Full\n")
-        else:
-            s.top+=1
-            data=int(input())#"enter the data to be pushed: "
-            s.st[s.top]=data
-    def display(s):
-        for i in range(s.top+1):
-            print(s.st[i],end="\n")
-    def pop(s):
-        if s.top != -1:
-            s.top=s.top-1
-        else:
-            print("Empty Stack")
+
+class Stack:
+    def __init__(self, size):
+        self.item = []
+        self.size = size
         
-    def peek(s):
-            print(s.st[s.top],end="")
 
+    def is_empty(self):
+        # Write code here
+        if len(self.item)==0 :
+            return True
 
-n=int(input())
-s1=stackADT(n)
-q = int(input())
-for i in range(q):
-    ch=int(input(""))#Enter the option: 
-    if ch==1:
-        s1.push()
-    elif ch==2:
-        s1.pop()
-    elif ch==3:
-        s1.peek()
+    def is_full(self):
+        # Write code here
+        if len(self.item)==self.size :
+            return True
 
-s1.display()
+    def push(self, data):
+        if not self.is_full():
+            self.item.append(data)
+
+    def pop(self):
+        if not self.is_empty():
+            self.item.pop()
+
+    def status(self):
+        if not self.is_empty():
+            for i in self.item:
+                print(i)
+
+# Do not change the following code
+size, queries = map(int, input().rstrip().split())
+stack = Stack(size)
+for line in range(queries):
+    values = list(map(int, input().rstrip().split()))
+    if values[0] == 1:
+        stack.push(values[1])
+    elif values[0] == 2:
+        stack.pop()
+stack.status()
